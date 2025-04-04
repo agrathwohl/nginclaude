@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "name": "nginclaude",
+  "builds": [
+    {
+      "src": "dist/vercel-proxy.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/dist/vercel-proxy.js"
+    }
+  ],
+  "env": {
+    "ANTHROPIC_API_KEY": "@anthropic-api-key"
+  }
+}

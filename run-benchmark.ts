@@ -146,38 +146,17 @@ async function runBenchmark() {
   // Display results
   console.log('\n📊 RESULTS:');
   
-  const table = new Table({
-    head: ['Proxy', 'Description', 'Avg (ms)', 'Min (ms)', 'Max (ms)', 'Status'],
-    style: {
-      head: ['cyan'],
-      border: []
-    }
-  });
-
   // Sort results by average time
   const sortedResults = Object.values(results).sort((a, b) => a.avg - b.avg);
   
-  sortedResults.forEach((result, index) => {
-    const status = result.success 
-      ? colors.green(`✓ ${result.statusCode || ''}`) 
-      : colors.red(`✗ ${result.error || 'Failed'}`);
-      
-    // Highlight the winner in green
-    const proxyName = index === 0 && result.success 
-      ? colors.green.bold(result.proxy) 
-      : result.proxy;
-      
-    table.push([
-      proxyName,
-      result.description,
-      result.avg.toFixed(2),
-      result.min.toFixed(2),
-      result.max.toFixed(2),
-      status
-    ]);
+  console.log('## Benchmark Results\n');
+  console.log('| Proxy | Description | Avg (ms) | Min (ms) | Max (ms) | Status |');
+  console.log('| ----- | ----------- | -------- | -------- | -------- | ------ |');
+  
+  sortedResults.forEach((result) => {
+    const status = result.success ? `✓ ${result.statusCode || ''}` : `✗ ${result.error || 'Failed'}`;
+    console.log(`| ${result.proxy} | ${result.description} | ${result.avg.toFixed(2)} | ${result.min.toFixed(2)} | ${result.max.toFixed(2)} | ${status} |`);
   });
-
-  console.log(table.toString());
   
   // Calculate how much slower nginclaude is
   if (results['nginclaude'] && results['http-proxy'] && results['nginclaude'].success && results['http-proxy'].success) {

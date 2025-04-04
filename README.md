@@ -4,7 +4,7 @@ Why pay for cloud credits when you already are paying for Claude?
 
 ## What Fresh Hell Is This?
 
-`nginclaude` is what happens when I'm feeling thoroughly optimistic. It's a reverse proxy server that replaces nginx's boring, reliable configuration files with the same exact thing but it takes a hell of a lot longer. Using Claude 3 Haiku (Anthropic's "we have GPT at home" model), this abomination decides where to route your precious production traffic based on vibes and whatever hallucinations it's having that millisecond.
+`nginclaude` is what happens when I'm feeling thoroughly optimistic. It's a reverse proxy server that replaces nginx's boring, reliable configuration files with the same exact thing but it takes a hell of a lot longer. Using Claude 3 Haiku, this abomination decides where to route your precious production traffic based on vibes and whatever hallucinations it's having that millisecond.
 
 ## "Features" (AKA Ways This Will Destroy Your Weekend)
 
@@ -130,6 +130,32 @@ vercel deploy
 
 IMPORTANT: This project is designed to be deployed to Vercel, so just do that. It's cool because now there's a way top deploy a reverse proxy for cheap/free on a stable (sometimes) host.
 
+## Benchmarking
+
+Want to measure exactly how much this monstrosity will slow down your application? We've included a handy benchmark script that will quantify your suffering!
+
+```bash
+# First, start the mock backend services
+npm run mock-backends
+
+# In another terminal, start nginclaude
+npm run dev
+
+# In yet another terminal, start the comparison proxies
+npm run setup-proxies
+
+# Finally, run the benchmark (10 iterations against /api/users endpoint)
+npm run benchmark -- 10 /api/users
+```
+
+The benchmark will compare nginclaude against:
+
+- nginx (if you've set it up with the generated config)
+- a basic http-proxy implementation
+- a fastify-proxy implementation
+
+Results will show you exactly how many milliseconds of your life you're wasting per request, along with a helpful multiplier showing how much slower AI-powered routing is compared to traditional configuration.
+
 ## FAQ
 
 **Q: Is this production-ready?**  
@@ -140,6 +166,9 @@ A: Less than therapy, but more than a sensible nginx config.
 
 **Q: Why not just use regular nginx?**  
 A: And miss the opportunity to put "AI Engineer" on your LinkedIn? Please.
+
+**Q: Should I actually benchmark this against real proxies?**  
+A: Only if you enjoy watching numbers that make grown DevOps engineers cry.
 
 ## License
 

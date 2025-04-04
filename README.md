@@ -1,10 +1,10 @@
-# nginclaude 🧠🚽
+# nginclaude 🧠🚈
 
-_Because nothing says "enterprise-grade infrastructure" like letting an AI hallucinate your routing rules!_
+Why pay for cloud credits when you already are paying for Claude?
 
 ## What Fresh Hell Is This?
 
-`nginclaude` is what happens when you let DevOps engineers drink on weekends. It's a reverse proxy server that replaces nginx's boring, reliable configuration files with the digital equivalent of asking a hyperactive toddler for directions. Using Claude 3 Haiku (Anthropic's "we have GPT at home" model), this abomination decides where to route your precious production traffic based on vibes and whatever hallucinations it's having that millisecond.
+`nginclaude` is what happens when I'm feeling thoroughly optimistic. It's a reverse proxy server that replaces nginx's boring, reliable configuration files with the same exact thing but it takes a hell of a lot longer. Using Claude 3 Haiku (Anthropic's "we have GPT at home" model), this abomination decides where to route your precious production traffic based on vibes and whatever hallucinations it's having that millisecond.
 
 ## "Features" (AKA Ways This Will Destroy Your Weekend)
 
@@ -128,7 +128,7 @@ npm run build
 vercel deploy
 ```
 
-IMPORTANT: This project is designed to be deployed to Vercel, because apparently we enjoy suffering. The AI SDK integration ensures you get all the Vercel-specific timeouts and errors you've come to know and love.
+IMPORTANT: This project is designed to be deployed to Vercel, so just do that. It's cool because now there's a way top deploy a reverse proxy for cheap/free on a stable (sometimes) host.
 
 ## FAQ
 
@@ -138,13 +138,9 @@ A: Only if you hate your users, your infrastructure, and yourself.
 **Q: How much will this cost to run?**  
 A: Less than therapy, but more than a sensible nginx config.
 
-**Q: Will this handle high traffic?**  
-A: It will handle high traffic the way a paper boat handles Niagara Falls.
-
 **Q: Why not just use regular nginx?**  
 A: And miss the opportunity to put "AI Engineer" on your LinkedIn? Please.
 
 ## License
 
-MIT, because even we aren't cruel enough to prevent you from abandoning this project when you come to your senses.
-
+MIT
